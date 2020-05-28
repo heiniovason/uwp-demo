@@ -21,30 +21,23 @@ namespace BookitLoginUWP.Views
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-            bool bookingVerified = false;
-            if(bookingVerified)
+        {          
+            string userInput = LoginTextBox.Text;
+            const string secretAnswer = "secret";
+            if(userInput== secretAnswer)
             {
-                /***
-                 * https://stackoverflow.com/questions/41220975/uwp-turn-off-kiosk-mode
-                 * Add to Package.appxmanifest:
-                 *     1) <uap:Extension Category="windows.lockScreenCall" />
-                 *     2) <uap:Extension Category="windows.aboveLockScreen" />
-                 */
-                LockApplicationHost lockHost = LockApplicationHost.GetForCurrentView();
-                if (lockHost != null)
-                {
-                    lockHost.RequestUnlock();
-                    // Default login as Guest user
-                    // Kiosk Assigned Access to application with Guest account
-                    // A restricted service should inform current user if the machine booked withing the next 5min
-                    // and that they will want to save their work, and leave the spot.
-                }
+                string msg = string.Format("\"{0}\" is the correct answer!", userInput);
+                MessageDialog messageDialog = new MessageDialog(msg);
+                _ = messageDialog.ShowAsync();
+                //if (lockHost != null)
+                //{
+                //    lockHost.RequestUnlock();
+                //}
             }
             else
             {
-                MessageDialog messageDialog = new MessageDialog("False");
+                string msg = string.Format("\"{0}\" is the wrong answer!", userInput);
+                MessageDialog messageDialog = new MessageDialog(msg);
                 _ = messageDialog.ShowAsync();
             }
         }

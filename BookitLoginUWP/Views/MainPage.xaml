@@ -21,6 +21,7 @@
                 The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.
             -->
+
             <Button x:Name="SubmitButton"
                     Click="submitButton_Click"
                     Content="Submit"
@@ -29,6 +30,7 @@
                     Width="200"
                     FontSize="40"
                     />
+            <TextBox x:Name="LoginTextBox" HorizontalAlignment="Left" Margin="836,364,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="172"/>
         </Grid>
     </Grid>
 </Page>
